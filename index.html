@@ -8,6 +8,8 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+	
+	<script type="text/javascript" src="//rawgit.com/MythicAngel/bangla-keyboard-layout/master/rokeya_layout-4.4.73.js"></script>
   </head>
   <body>
     <section class="page-header">
@@ -41,9 +43,9 @@
 </ul>
 
 <h2>
-<a id="অনলাইন-ডেমো" class="anchor" href="#%E0%A6%85%E0%A6%A8%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%A1%E0%A7%87%E0%A6%AE%E0%A7%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>অনলাইন ডেমো</h2>
+<a id="online-demo" class="anchor" href="#%E0%A6%85%E0%A6%A8%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8-%E0%A6%A1%E0%A7%87%E0%A6%AE%E0%A7%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>অনলাইন ডেমো</h2>
 
-<p><a href="http://seoul.freehostia.com/">Rokeya Layout Demo</a></p>
+<p><textarea style="width: 100%; height: 300px;font-family: 'Noto Sans Bengali', tahoma, 'Helvetica', 'Arial', sans-serif;" onfocus="" id="checkItOut" name="checkItOut"></textarea></p>
 
 <h2>
 <a id="সহায়ক-তথ্যাবলী" class="anchor" href="#%E0%A6%B8%E0%A6%B9%E0%A6%BE%E0%A7%9F%E0%A6%95-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AC%E0%A6%B2%E0%A7%80" aria-hidden="true"><span class="octicon octicon-link"></span></a>সহায়ক তথ্যাবলী</h2>
@@ -136,7 +138,40 @@
       </footer>
 
     </section>
+<script type="text/javascript">
+function initRokeyaLayout()
+{
+	new banglaLayout("checkItOut").loadHelpTooltip();
+}
 
+if(typeof Keyboard!='undefined')
+	initRokeyaLayout();
+
+else
+{
+	var fileref=document.createElement('script');
+	fileref.setAttribute("type","text/javascript");
+	fileref.setAttribute("src", "rokeya_layout-dev.js");
+	
+	if(typeof(fileref.addEventListener) != 'undefined') 
+	{
+		fileref.addEventListener('load',initRokeyaLayout,false);
+	}
+	else if(fileref.readyState)
+	{
+		fileref.onreadystatechange = function(){
+			if (fileref.readyState == "loaded" || fileref.readyState == "complete")
+			{
+				fileref.onreadystatechange = null;
+				initRokeyaLayout();
+			}
+		};
+	}
+	else
+		alert('Unable to connect to internet and This browser is not supported to work offline');
+	document.getElementsByTagName("head")[0].appendChild(fileref);
+}
+</script>
   
   </body>
 </html>
